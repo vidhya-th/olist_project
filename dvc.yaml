@@ -1,0 +1,3 @@
+stages:
+  preprocess:
+    cmd: "python src/your_cleaning_script.py" 
