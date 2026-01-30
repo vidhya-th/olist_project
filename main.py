@@ -1,20 +1,41 @@
+import sys
+from src.logger import logger
+from src.exception import OlistException
+from src.components.data_ingestion import DataIngestion
+
+if __name__ == "__main__":
+    try:
+        logger.info(">>> Starting Olist Pricing Pipeline <<<")
+        
+        # 1. Data Ingestion
+        ingestion = DataIngestion()
+        train_path, test_path = ingestion.initiate_data_ingestion()
+        
+        logger.info(f"Data Ingestion Success: Train path -> {train_path}")
+        logger.info(">>> Pipeline Step 1 Completed Successfully <<<")
+
+        # Future steps will be added here:
+        # 2. Data Transformation
+        # 3. Model Training
+
+    except Exception as e:
+        logger.error("Pipeline failed in main.py execution")
+        raise OlistException(e, sys)
+
+
+
+
 """from src.logger import logger
 
 if __name__ == "__main__":
     logger.info("Starting OlistPricing app")
-    """
 
-
-
-"""
-Olist Dynamic Pricing Pipeline - Fixed main.py
-"""
 from src.logger import logger  #  Your global logger - already configured
 from src.utils import load_master_dataset, extract_flash_sale_features, engineer_pricing_features
 from src.exception import OlistException
 
 def run_pipeline():
-    """Main pipeline orchestrator"""
+   # Main pipeline orchestrator
     logger.info(" Starting Olist Dynamic Pricing Pipeline")
     
     try:
@@ -43,7 +64,7 @@ def run_pipeline():
         return False
 
 def main():
-    """Entry point"""
+    #Entry point
     success = run_pipeline()
     if success:
         logger.info(" Pipeline SUCCESS!")
@@ -55,4 +76,4 @@ def main():
 if __name__ == "__main__":
     main()
 
-
+"""

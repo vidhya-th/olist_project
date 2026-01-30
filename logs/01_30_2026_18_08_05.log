@@ -1,0 +1,8 @@
+[ 2026-01-30 18:08:07,204 ] OlistPricing - INFO - >>> Starting Olist Pricing Pipeline <<<
+[ 2026-01-30 18:08:07,204 ] OlistPricing - INFO - Entered the Data Ingestion component
+[ 2026-01-30 18:08:07,953 ] OlistPricing - INFO - Raw datasets loaded. Starting merge for Master Dataset.
+[ 2026-01-30 18:08:08,476 ] OlistPricing - INFO - Master dataset merged. Shape: (111023, 23)
+[ 2026-01-30 18:08:10,477 ] OlistPricing - INFO - Initiating Train-Test split
+[ 2026-01-30 18:08:12,531 ] OlistPricing - INFO - Ingestion of data is completed successfully
+[ 2026-01-30 18:08:12,610 ] OlistPricing - INFO - Data Ingestion Success: Train path -> data\processed\train.csv
+[ 2026-01-30 18:08:12,610 ] OlistPricing - INFO - >>> Pipeline Step 1 Completed Successfully <<<
