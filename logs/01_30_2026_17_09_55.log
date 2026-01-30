@@ -1,0 +1,22 @@
+[ 2026-01-30 17:09:56,490 ] OlistPricing - INFO -  Starting Olist Dynamic Pricing Pipeline
+[ 2026-01-30 17:09:56,491 ] OlistPricing - INFO -  Loading master dataset...
+[ 2026-01-30 17:09:57,462 ] OlistPricing - INFO -  Loaded master dataset: (112650, 22)
+[ 2026-01-30 17:09:57,465 ] OlistPricing - INFO -  Extracting flash sale features...
+[ 2026-01-30 17:09:57,465 ] OlistPricing - INFO -  Extracting time features...
+[ 2026-01-30 17:09:57,465 ] OlistPricing - ERROR -  Unexpected error: Can only use .dt accessor with datetimelike values
+[ 2026-01-30 17:09:57,465 ] OlistPricing - ERROR - Full traceback:
+Traceback (most recent call last):
+  File "C:\olist_project\main.py", line 27, in run_pipeline
+    df = extract_flash_sale_features(df)
+  File "C:\olist_project\src\utils.py", line 155, in extract_flash_sale_features
+    return TimeUtils.extract_flash_sale_features(df)
+  File "C:\olist_project\src\utils.py", line 108, in extract_flash_sale_features
+    df['hour'] = df[ts_col].dt.hour
+  File "C:\Users\HP\AppData\Roaming\Python\Python310\site-packages\pandas\core\generic.py", line 6321, in __getattr__
+    return object.__getattribute__(self, name)
+  File "C:\Users\HP\AppData\Roaming\Python\Python310\site-packages\pandas\core\accessor.py", line 224, in __get__
+    accessor_obj = self._accessor(obj)
+  File "C:\Users\HP\AppData\Roaming\Python\Python310\site-packages\pandas\core\indexes\accessors.py", line 643, in __new__
+    raise AttributeError("Can only use .dt accessor with datetimelike values")
+AttributeError: Can only use .dt accessor with datetimelike values
+[ 2026-01-30 17:09:57,515 ] OlistPricing - ERROR -  Pipeline FAILED!

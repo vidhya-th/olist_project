@@ -1,0 +1,46 @@
+[ 2026-01-30 17:08:29,954 ] OlistPricing - INFO -  Starting Olist Dynamic Pricing Pipeline
+[ 2026-01-30 17:08:29,954 ] OlistPricing - INFO -  Loading master dataset...
+[ 2026-01-30 17:08:29,955 ] OlistPricing - INFO -  Creating master dataset from raw files...
+[ 2026-01-30 17:08:29,956 ] OlistPricing - INFO -  Loading raw Olist datasets...
+[ 2026-01-30 17:08:30,751 ] OlistPricing - INFO -  Merging datasets...
+[ 2026-01-30 17:08:31,515 ] OlistPricing - INFO - Master dataset created: (112650, 22)
+[ 2026-01-30 17:08:31,547 ] OlistPricing - ERROR -  Unexpected error: Cannot save file into a non-existent directory: 'C:\data\processed'
+[ 2026-01-30 17:08:31,556 ] OlistPricing - ERROR - Full traceback:
+Traceback (most recent call last):
+  File "C:\olist_project\src\utils.py", line 27, in load_master_dataset
+    df = pd.read_csv(processed_path)
+  File "C:\Users\HP\AppData\Roaming\Python\Python310\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Users\HP\AppData\Roaming\Python\Python310\site-packages\pandas\io\parsers\readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "C:\Users\HP\AppData\Roaming\Python\Python310\site-packages\pandas\io\parsers\readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+  File "C:\Users\HP\AppData\Roaming\Python\Python310\site-packages\pandas\io\parsers\readers.py", line 1880, in _make_engine
+    self.handles = get_handle(
+  File "C:\Users\HP\AppData\Roaming\Python\Python310\site-packages\pandas\io\common.py", line 873, in get_handle
+    handle = open(
+FileNotFoundError: [Errno 2] No such file or directory: 'C:/data/processed/olist_master_dataset.csv'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\olist_project\main.py", line 23, in run_pipeline
+    df = load_master_dataset()
+  File "C:\olist_project\src\utils.py", line 151, in load_master_dataset
+    return OlistDataUtils.load_master_dataset(raw_dir)
+  File "C:\olist_project\src\utils.py", line 32, in load_master_dataset
+    df.to_csv(processed_path, index=False)
+  File "C:\Users\HP\AppData\Roaming\Python\Python310\site-packages\pandas\util\_decorators.py", line 333, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\HP\AppData\Roaming\Python\Python310\site-packages\pandas\core\generic.py", line 3989, in to_csv
+    return DataFrameRenderer(formatter).to_csv(
+  File "C:\Users\HP\AppData\Roaming\Python\Python310\site-packages\pandas\io\formats\format.py", line 1014, in to_csv
+    csv_formatter.save()
+  File "C:\Users\HP\AppData\Roaming\Python\Python310\site-packages\pandas\io\formats\csvs.py", line 251, in save
+    with get_handle(
+  File "C:\Users\HP\AppData\Roaming\Python\Python310\site-packages\pandas\io\common.py", line 749, in get_handle
+    check_parent_directory(str(handle))
+  File "C:\Users\HP\AppData\Roaming\Python\Python310\site-packages\pandas\io\common.py", line 616, in check_parent_directory
+    raise OSError(rf"Cannot save file into a non-existent directory: '{parent}'")
+OSError: Cannot save file into a non-existent directory: 'C:\data\processed'
+[ 2026-01-30 17:08:31,595 ] OlistPricing - ERROR -  Pipeline FAILED!
