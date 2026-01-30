@@ -2,7 +2,7 @@
 import pandas as pd
 import numpy as np
 from typing import List, Dict, Optional
-from src.logger import logger  # Your global logger ✅
+from src.logger import logger 
 from src.exception import OlistException
 
 # MASTER DATASET CONSTANTS (112k x 22 from exploration.ipynb)
