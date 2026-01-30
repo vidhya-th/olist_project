@@ -20,7 +20,7 @@ Revenue: price + freight_value (Olist model)
 
 ```mermaid
 graph TD
-    A[Your EDA: 112K×22] -->|dvc:features| B[data/features/train.parquet]
+    A[ EDA: 112K×22] -->|dvc:features| B[data/features/train.parquet]
     B --> C[RandomForest<br/>Your EDA Model #1]
     B --> D[GradientBoosting<br/>Your EDA Model #2]
     B --> E[ExtraTrees<br/>Your EDA Model #3]
