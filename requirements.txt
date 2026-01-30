@@ -1,1 +1,19 @@
-jupyter
+# Data Manipulation
+pandas
+numpy
+
+# Machine Learning & Modeling
+scikit-learn
+lightgbm
+xgboost
+
+# Optimization & Math
+scipy
+
+# Visualization (EDA)
+matplotlib
+seaborn
+
+# API & Deployment (Optional but recommended)
+fastapi
+uvicorn
