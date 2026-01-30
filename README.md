@@ -38,14 +38,16 @@ dvc repro
 mlflow ui  
 ```
 
-##  EDA → Production Features
+##   Production Features
 
-| EDA Section | Feature Name | Model Impact |
-|-------------|--------------|--------------|
-| **Peak Hours (11-16)** | `flash_sale_window` | **#1 feature** all 3 models |
-| **Revenue Model** | `revenue = price + freight_value` | Target variable |
-| **Product Attrs** | `revenue_per_kg`, `product_complexity` | Top-5 features |
-| **Categories** | Target encoding (bed_bath_table etc.) | Category stratification |
+| Feature Category | Variables | Business Logic |
+| :--- | :--- | :--- |
+| **Urgency** | `flash_sale_window`, `purchase_hour` | Capture 11:00-16:00 conversion spikes. |
+| **Elasticity** | `discount_pct`, `category_avg_price` | Quantify how much demand changes per $1 discount. |
+| **Logistics** | `freight_ratio`, `product_weight_g` | Account for "hidden" costs that deter buyers. |
+| **Identity** | `product_category_name_english` | Allow the model to treat health_beauty differently than watches. |
+
+
 
 ##  Expected Production Results
 
@@ -56,16 +58,31 @@ mlflow ui
 | **ExtraTrees** | **10.5** | **12.9** | **+7.1%** |
 | **Ensemble** | **~10.2** | **12.4** | **+7.8%**  |
 
-##  File Structure (40%  from EDA)
+##  File Structure 
 
 ```
-olist-pricing/
-├── data/processed/olist_master_dataset.csv  
-├── src/utils.py                            
-├── src/features/build_features.py         
-├── src/models/train_3models.py             
-├── dvc.yaml                               
-└── model_card.md                          
+olist_project/
+├── data/
+│   ├── raw/                # Original Olist CSVs
+│   ├── processed/          # Merged master_dataset.csv
+│   └── features/           # Engineered train.parquet / test.parquet
+├── logs/                   # Log files (e.g., 01_24_2026.log)
+├── models/                 # RandomForest, GB, and ExtraTrees .pkl files
+├── notebooks/              # exploration.ipynb
+├── src/
+│   ├── __init__.py
+│   ├── logger.py           # Logging config (File + Stream)
+│   ├── exception.py        # Custom error handling
+│   ├── components/
+│   │   ├── data_ingestion.py
+│   │   ├── data_transformation.py  <-- Feature engineering logic
+│   │   └── model_trainer.py        <-- 3-model ensemble training
+│   └── pipeline/
+│       ├── train_pipeline.py
+│       └── predict_pipeline.py
+├── main.py
+├── requirements.txt
+└── setup.py                   
 ```
 
 ##  Core Implementation 
